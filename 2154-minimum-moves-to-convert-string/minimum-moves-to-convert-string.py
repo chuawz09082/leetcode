@@ -7,7 +7,6 @@ class Solution:
         while start < len(s_list)-2:
             while start < len(s_list)-2 and s_list[start] != "X":
                 start += 1
-                print(start,s_list[start])
                 
             if "X" in s_list[start:start+3]:
                 moves += 1
