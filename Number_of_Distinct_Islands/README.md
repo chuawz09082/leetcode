@@ -8,13 +8,12 @@ An island is considered to be the same as another if and only if one island can 
 The task is to return the **number of distinct islands**.
 
 ## Example
-
-Example 1
-Input: grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]
+Example 1  
+Input: grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]  
 Output: 1
 
-Example 2
-Input: grid = [[1,1,0,1,1],[1,0,0,0,0],[0,0,0,0,1],[1,1,0,1,1]]
+Example 2  
+Input: grid = [[1,1,0,1,1],[1,0,0,0,0],[0,0,0,0,1],[1,1,0,1,1]]  
 Output: 3
 
 
