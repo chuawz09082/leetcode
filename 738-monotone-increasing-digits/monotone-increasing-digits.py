@@ -7,6 +7,7 @@ class Solution:
                 return int("".join(lst))
 
             for i in range(len(lst)-1,0,-1):
+                print(lst)
                 if int(lst[i]) < int(lst[i-1]):
                     pos = i
                     break
