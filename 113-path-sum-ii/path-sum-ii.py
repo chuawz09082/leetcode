@@ -14,9 +14,8 @@ class Solution:
 
         while current:
             nxtlevel = []
-            for i in range(len(current)):
-                node = current[i][0]
-                listvals = current[i][1]
+            for node,listvals in current:
+
                 if not node.left and not node.right and sum(listvals) == targetSum:
                     result.append(listvals)
                 if node.left:
