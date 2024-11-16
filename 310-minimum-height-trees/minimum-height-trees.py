@@ -20,7 +20,7 @@ class Solution:
 
         # Start with all nodes, gradually trim the leaves
         remaining_nodes = n
-        print(edgesdict)  # Debug: print the adjacency list to verify structure
+        
         
         # Perform a topological-like trim of the leaves
         while remaining_nodes > 2:
