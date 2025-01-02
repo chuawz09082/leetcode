@@ -49,20 +49,9 @@ class Solution:
         if left_index == len(s):
             return root
 
-        # Step 7: Locate the substring for the right child.
-        right_index = left_index
-        check_right = []  # Stack to track parentheses for the right subtree.
-
-        # Traverse the string to find the closing ')' for the right subtree.
-        while check_right or right_index == left_index:
-            if s[right_index] == '(':
-                check_right.append('(')  # Push '(' onto the stack.
-            elif s[right_index] == ')':
-                check_right.pop()  # Pop ')' from the stack.
-            right_index += 1
 
         # Step 8: Recursively build the right subtree using the identified substring.
-        root.right = self.str2tree(s[left_index + 1 : right_index - 1])
+        root.right = self.str2tree(s[left_index + 1 : len(s) - 1])
 
         # Step 9: Return the constructed root node.
         return root
