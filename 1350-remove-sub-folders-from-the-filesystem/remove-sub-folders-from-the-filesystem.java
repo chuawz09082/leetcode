@@ -19,18 +19,15 @@ class Solution {
                 continue;
             }
 
-            boolean add = false;
+            
 
             for (int idx = 0; idx < mainfolder.length; idx++){
                 if (!mainfolder[idx].equals(subfolder[idx])){
-                    add = true;
+                    res.add(s);
                     break;
                 }
             }
 
-            if (add == true){
-                res.add(s);
-            }
 
 
         }
