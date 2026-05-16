@@ -5,11 +5,11 @@ class Solution {
         int rows = rooms.length;
         int cols = rooms[0].length;
 
-        ArrayDeque<int[]> queue = new ArrayDeque<>();
+        Queue<int[]> queue = new LinkedList<>();
 
         for (int row = 0; row < rows; row++){
             for (int col = 0; col < cols; col++){
-                if (rooms[row][col] == 0) queue.addLast(new int[]{row, col});
+                if (rooms[row][col] == 0) queue.offer(new int[]{row, col});
             }
         }
 
@@ -29,7 +29,7 @@ class Solution {
                     int newcol = current[1] + n[1];
 
                     if (newrow < 0 || newrow >= rows || newcol < 0 || newcol >= cols || rooms[newrow][newcol] != Integer.MAX_VALUE) continue;
-                    queue.addLast(new int[]{newrow, newcol});
+                    queue.offer(new int[]{newrow, newcol});
                 }
             }
 
