@@ -14,22 +14,34 @@
  * }
  */
 class Solution {
-    PriorityQueue<Integer> pq;
     public int kthSmallest(TreeNode root, int k) {
-        pq = new PriorityQueue<>((a,b) -> b - a);
-        dfs(root, k , pq);
-        return pq.poll();
-    }
 
-    private void dfs(TreeNode node, int k, PriorityQueue<Integer> pq){
-        if (pq.size() == k && pq.peek() > node.val){
-            pq.poll();
-            pq.offer(node.val);
-        } else if (pq.size() < k){
-            pq.offer(node.val);
+        TreeSet<Integer> nodes = new TreeSet<>();
+
+        ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if (nodes.size() == k ) {
+                if (nodes.last() > node.val) nodes.pollLast();
+                else if (nodes.last() < node.val) continue;
+            }
+
+            nodes.add(node.val);
+
+            if (node.right != null){
+                queue.addFirst(node.right);
+            }
+
+            if (node.left != null){
+                queue.addFirst(node.left);
+            }
+
         }
 
-        if (node.left != null) dfs(node.left, k ,pq);
-        if (node.right != null) dfs(node.right, k ,pq);
+
+        return nodes.last();
+        
     }
 }
