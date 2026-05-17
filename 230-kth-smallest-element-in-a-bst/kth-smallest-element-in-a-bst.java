@@ -25,7 +25,7 @@ class Solution {
             TreeNode node = queue.poll();
             if (nodes.size() == k ) {
                 if (nodes.last() > node.val) nodes.pollLast();
-                else if (nodes.last() < node.val) continue;
+                else if (nodes.last() < node.val) break;
             }
 
             nodes.add(node.val);
