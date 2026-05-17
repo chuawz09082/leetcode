@@ -1,34 +1,39 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        int[] indegree = new int[numCourses];
-        List<List<Integer>> adj = new ArrayList<>();
+        int[] inDegree = new int[numCourses];
 
-        for (int idx = 0; idx < numCourses; idx++){
-            adj.add(new ArrayList<>());
+        HashMap<Integer, List<Integer>> graph = new HashMap<>();
+
+        int total = 0;
+
+        for (int[] p: prerequisites){
+            graph.computeIfAbsent(p[1], k -> new ArrayList<>()).add(p[0]);
+            inDegree[p[0]] ++;
         }
 
-        for (int[] prerequisite: prerequisites){
-            adj.get(prerequisite[1]).add(prerequisite[0]);
-            indegree[prerequisite[0]]++;
-        }
-
-        Queue<Integer> queue = new LinkedList<>();
+        ArrayDeque<Integer> queue = new ArrayDeque<>();
 
         for (int i = 0; i < numCourses; i++){
-            if (indegree[i] == 0) queue.offer(i);
+            if (inDegree[i] == 0) queue.add(i);
         }
 
-        int nodesVisited = 0;
         while (!queue.isEmpty()){
-            int current = queue.poll();
-            nodesVisited += 1;
+            int currentCourse = queue.poll();
+            total++;
 
-            for (int nextCourse: adj.get(current)){
-                indegree[nextCourse]--;
-                if (indegree[nextCourse] == 0) queue.offer(nextCourse);
+            if (!graph.containsKey(currentCourse)) continue;
+
+            for (int nextCourse: graph.get(currentCourse)){
+                inDegree[nextCourse] --;
+                if (inDegree[nextCourse] == 0){
+                    queue.add(nextCourse);
+                }
             }
         }
 
-        return nodesVisited == numCourses;
+
+
+        return total == numCourses;
+        
     }
 }
